@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { ContactInfoService } from '../services/contact-info.service';
 
 @Component({
   selector: 'app-tab1',
@@ -13,14 +14,12 @@ export class Tab1Page {
   email: string;
   note: string;
   contacts: any[];
-  flag: boolean;
 
-  constructor(public alert: AlertController) {
-    this.name='';
-    this.email='';
-    this.note='';
-    this.contacts=[];
-    this.flag=true;
+  constructor(public alert: AlertController, public contactInfo: ContactInfoService) {
+    this.name= contactInfo.name;
+    this.email= contactInfo.email;
+    this.note= contactInfo.note;
+    this.contacts= contactInfo.contacts;
   }
 
   // Declare functions
@@ -47,16 +46,6 @@ export class Tab1Page {
       this.showAlert('Exito', 'Contacto guardado', 'El contacto se ha guardado correctamente', ['OK']);
     } else {
       this.showAlert('Error', 'Ha ocurrido un problema', 'Debe llenar los campos requeridos', ['OK']);
-    }
-  }
-  deleteContact(i) {
-    this.contacts.splice(i, 1);
-  }
-  togglePressed() {
-    if(this.flag) {
-      this.flag = false;
-    } else {
-      this.flag = true;
     }
   }
 }

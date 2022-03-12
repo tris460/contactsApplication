@@ -13,4 +13,26 @@
     </ion-toolbar>
   </ion-header>
 
+  <h1 class="container-title">Mis contactos</h1>
+    <p class="no-contactos" *ngIf="contacts.length === 0">No se han añadido contactos</p>
+    <div *ngIf="contacts.length > 0">
+      <p class="notas">Ver notas</p>
+      <ion-toggle (click)="togglePressed()"></ion-toggle>
+      <ion-card *ngFor="let contact of contacts; let i = index">
+        <ion-card-header>
+          <ion-card-subtitle>{{contact.telephone}}</ion-card-subtitle>
+          <ion-card-title>{{contact.name}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Email: {{contact.email}}
+        </ion-card-content>
+        <ion-card-content *ngIf="!flag">
+          Notas: {{contact.notes}}
+        </ion-card-content>
+        <ion-button (click)="deleteContact(i)" class="delete-contact">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-card>
+    </div>
+
 </ion-content>
