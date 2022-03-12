@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Contactos
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,8 +9,22 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Eliminar contactos</ion-title>
     </ion-toolbar>
   </ion-header>
 
+  <h1 class="container-title">Mis contactos</h1>
+  <p class="no-contactos" *ngIf="contacts.length === 0">No se han añadido contactos</p>
+  <div *ngIf="contacts.length > 0">
+    <ion-card *ngFor="let contact of contacts; let i = index">
+      <ion-card-header>
+        <ion-card-title>{{contact.name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+      </ion-card-content>
+      <ion-button (click)="deleteContact(i)" class="delete-contact">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-card>
+  </div>
 </ion-content>
