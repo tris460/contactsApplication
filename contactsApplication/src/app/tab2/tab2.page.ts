@@ -24,7 +24,4 @@ export class Tab2Page {
     }
   }
 
-  deleteContact(i) {
-    this.contacts.splice(i, 1);
-  }
 }

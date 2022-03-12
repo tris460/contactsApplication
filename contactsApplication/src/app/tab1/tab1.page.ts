@@ -44,6 +44,10 @@ export class Tab1Page {
       this.contacts.push(newContact);
       console.log(this.contacts);
       this.showAlert('Exito', 'Contacto guardado', 'El contacto se ha guardado correctamente', ['OK']);
+      this.name = '';
+      this.email = '';
+      this.note = '';
+      this.telephone = 0;
     } else {
       this.showAlert('Error', 'Ha ocurrido un problema', 'Debe llenar los campos requeridos', ['OK']);
     }
